@@ -25,8 +25,9 @@ export class CreateNewLeadComponent {
       lastName: ['' ],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [ Validators.pattern('^[- +()0-9]+$')]],
+      title: [''],
       companyName: [''],
-      description: [''],
+      notes: [''],
     });
   }
 

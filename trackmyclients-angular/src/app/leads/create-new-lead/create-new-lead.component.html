@@ -56,6 +56,12 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
                                 <mat-form-field class="full-width">
+                                    <mat-label>Title</mat-label>
+                                    <input matInput type="text" placeholder="CTO" formControlName="title">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <mat-form-field class="full-width">
                                     <mat-label>Company Name </mat-label>
                                     <input matInput type="text" placeholder="ACME Inc." formControlName="companyName">
                                 </mat-form-field>
@@ -63,8 +69,8 @@
                         </div>
                         <div class="row">
                             <mat-form-field>
-                                <mat-label>Description</mat-label>
-                                <textarea matInput type="textarea" formControlName="description"></textarea>
+                                <mat-label>Notes</mat-label>
+                                <textarea matInput type="textarea" formControlName="notes"></textarea>
                             </mat-form-field>
                         </div>
                     </div>
