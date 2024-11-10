@@ -2,12 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>TrackmyclientsAngular</title>
+  <title>TrackMyClients CRM for Accountants</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body>
-  <app-root></app-root>
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+  <app-root style="display: contents;"></app-root>
+  <script src="admin-lte/adminlte.js"></script>
+
+  <script>
+    const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
+    const Default = {
+      scrollbarTheme: "os-theme-light",
+      scrollbarAutoHide: "leave",
+      scrollbarClickScroll: true,
+    };
+    document.addEventListener("DOMContentLoaded", function () {
+      const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
+      if (
+        sidebarWrapper &&
+        typeof OverlayScrollbarsGlobal?.OverlayScrollbars !== "undefined"
+      ) {
+        OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
+          scrollbars: {
+            theme: Default.scrollbarTheme,
+            autoHide: Default.scrollbarAutoHide,
+            clickScroll: Default.scrollbarClickScroll,
+          },
+        });
+      }
+    });
+  </script>
 </body>
 </html>
