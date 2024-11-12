@@ -6,6 +6,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { LeadService } from '../lead.service';
 
 @Component({
   selector: 'app-create-new-lead',
@@ -18,13 +19,13 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 export class CreateNewLeadComponent {
   newLeadForm: FormGroup = new FormGroup('');
 
-  
-  constructor(private fb: FormBuilder){
+
+  constructor(private fb: FormBuilder, private leadService: LeadService) {
     this.newLeadForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['' ],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [ Validators.pattern('^[- +()0-9]+$')]],
+      firstName: ['test', Validators.required],
+      lastName: [''],
+      email: ['test@test.com', [Validators.required, Validators.email]],
+      phone: ['', [Validators.pattern('^[- +()0-9]+$')]],
       title: [''],
       companyName: [''],
       notes: [''],
@@ -34,8 +35,17 @@ export class CreateNewLeadComponent {
   onSubmit() {
     if (this.newLeadForm.valid) {
       console.log('Valid form', this.newLeadForm.value);
+      this.leadService.createNew(this.newLeadForm.value).subscribe(
+        {
+          next: (lead) => {
+            console.log('Lead created', lead);
+          },
+          error: (err) => {
+            console.error('Error creating lead', err);
+          }
+        });
     }
-    else{
+    else {
       console.log('Invalid form', this.newLeadForm.value);
     }
   }

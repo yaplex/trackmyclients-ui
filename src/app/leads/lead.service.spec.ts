@@ -22,20 +22,19 @@ describe('LeadService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('#createNewLead should post lead object to /Lead endpoint', async () => {
+  it('#createNewLead should post lead object to /Leads endpoint', async () => {
     const lead: Lead = {firstName: 'John', lastName: 'Doe', email: '', phone: '', title: '', companyName: '', notes: ''};
 
     const http = TestBed.inject(HttpTestingController);
     const createNew$ = service.createNew(lead);
     const promice = firstValueFrom(createNew$);
 
-    const req = http.expectOne('/Lead', 'post to api');
+    const req = http.expectOne('/Leads', 'POST to /Leads');
     expect(req.request.method).toBe('POST');
 
     req.flush(lead);
     expect(await promice).toEqual(lead);
 
     http.verify();
-
   });
 });

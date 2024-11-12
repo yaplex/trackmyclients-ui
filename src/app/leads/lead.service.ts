@@ -11,6 +11,6 @@ export class LeadService {
   constructor(private http: HttpClient) { }
   
   createNew(lead: Lead): Observable<Lead> {
-    return this.http.post<Lead>(`${this.configApiUri}/Leads`, lead);
+    return this.http.post<Lead>(`/Leads`, lead);
   }
 }
