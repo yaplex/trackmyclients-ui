@@ -1,14 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateNewLeadComponent } from './create-new-lead.component';
-
+import { RouterModule } from '@angular/router';
 describe('CreateNewLeadComponent', () => {
   let component: CreateNewLeadComponent;
   let fixture: ComponentFixture<CreateNewLeadComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CreateNewLeadComponent]
+      imports: [CreateNewLeadComponent, 
+        RouterModule.forRoot(
+          [{ path: '', component: CreateNewLeadComponent }]
+        )
+      ],
+      providers: []
     })
     .compileComponents();
 
